@@ -1,4 +1,9 @@
 import lvgl as lv
+import os
+try:
+    os.stat('/tmp/my_fifo')
+except OSError:
+    os.system('mkfifo /tmp/my_fifo')
 
 class Display:
     def __init__(self, width, height):

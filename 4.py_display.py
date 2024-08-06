@@ -1,4 +1,7 @@
 from maix import camera, display, image
+import os
+if not os.path.exists("/tmp/my_fifo"):
+    os.system("mkfifo /tmp/my_fifo")
 
 
 while True:

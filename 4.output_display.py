@@ -47,12 +47,7 @@ if __name__ == '__main__':
     label = lv.label(btn)
     label.set_text("Button")
     label.center()
-
-    def event_handler(evt):
-        if evt.get_code() == lv.EVENT.CLICKED:
-            print("Button clicked")
-
-    btn.add_event_cb(event_handler, lv.EVENT.CLICKED, None)
+    
     a = 0
     b = 0
     while True:

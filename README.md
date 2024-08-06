@@ -129,3 +129,4 @@ def flush_cb(disp, area, color_p):
 | [4.output_display.py](4.output_display.py)       | 将图像显示数据利用命名管道输出                 |
 | [4.display_in_python.py](4.display_in_python.py) | 使用 python 将图像显示数据从命名管道取出并显示 |
 
+运行例程 4 前需要执行 `mkfifo /tmp/my_fifo` 创建命名管道

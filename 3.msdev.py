@@ -31,7 +31,7 @@ class crosshair_cursor:
 
 # evdev driver for mouse
 class mouse_indev:
-    def __init__(self, scr=None, cursor=None, device='/dev/input/mice'):
+    def __init__(self, scr=None, cursor=None, device='/dev/input/event1'):
 
         # Open evdev and initialize members
         self.evdev = open(device, 'rb')

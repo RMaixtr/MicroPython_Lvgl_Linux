@@ -127,4 +127,5 @@ if __name__ == '__main__':
     btn.add_event_cb(event_handler, lv.EVENT.CLICKED, None)
     import time
     while True:
-        time.sleep_ms(1000)
+        lv.timer_handler()
+        time.sleep_us(5000)

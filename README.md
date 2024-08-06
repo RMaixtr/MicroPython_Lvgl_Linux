@@ -1,6 +1,6 @@
 # 一. Framebuffer Driver（利用帧缓冲显示）
 
-![framebuffer](resource\framebuffer.png)
+![framebuffer](resource/framebuffer.png)
 
 Usage（用法）
 
@@ -21,7 +21,7 @@ fs_driver.fs_register(fs_drv, 'L')
 
 ### 1. 显示 GIF
 
-![GIF](resource\GIF.gif)
+![GIF](resource/GIF.gif)
 
 ```python
 img = lv.gif(lv.screen_active())
@@ -35,7 +35,7 @@ img.align(lv.ALIGN.CENTER, -50, 0)
 
 alibaba.bin 中处理了'你''好'两个字符
 
-![zh](resource\zh.jpg)
+![zh](resource/zh.jpg)
 
 ```python
 myfont_cn = lv.binfont_create('L:/root/alibaba.bin')
@@ -58,7 +58,7 @@ def read_cb(indev, data) -> int:
 
 ### 1. 按键输入
 
-![key](resource\key.gif)
+![key](resource/key.gif)
 
 按钮分配给屏幕的特定坐标。 如果按下按钮，它将模拟按下指定坐标。
 
@@ -78,7 +78,7 @@ def read_cb(indev, data) -> int:
 
 ### 2. 鼠标输入
 
-![ms](resource\ms.gif)
+![ms](resource/ms.gif)
 
 ```python
 indev = lv.indev_create()

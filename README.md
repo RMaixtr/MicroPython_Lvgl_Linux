@@ -120,13 +120,13 @@ def flush_cb(disp, area, color_p):
 
 # 五. Examples（示例）
 
-| 示例                                             | 说明                                           |
-| ------------------------------------------------ | ---------------------------------------------- |
-| [0.framebuffer.py](/0.framebuffer.py)            | 利用帧缓冲显示 Hello World！                   |
-| [1.file_system.py](1.file_system.py)             | 利用文件系统显示 GIF 和中文                    |
-| [2.key.py](2.key.py)                             | 按键输入                                       |
-| [3.msdev.py](3.msdev.py)                         | 鼠标输入                                       |
-| [4.output_display.py](4.output_display.py)       | 将图像显示数据利用命名管道输出                 |
-| [4.display_in_python.py](4.display_in_python.py) | 使用 python 将图像显示数据从命名管道取出并显示 |
+| 示例                                  | 说明                                           |
+| ------------------------------------- | ---------------------------------------------- |
+| [0.framebuffer.py](/0.framebuffer.py) | 利用帧缓冲显示 Hello World！                   |
+| [1.file_system.py](1.file_system.py)  | 利用文件系统显示 GIF 和中文                    |
+| [2.key.py](2.key.py)                  | 按键输入                                       |
+| [3.msdev.py](3.msdev.py)              | 鼠标输入                                       |
+| [4.mpy_output.py](4.mpy_output.py)    | 将图像显示数据利用命名管道输出                 |
+| [4.py_display.py](4.py_display.py)    | 使用 python 将图像显示数据从命名管道取出并显示 |
 
-运行例程 4 前需要执行 `mkfifo /tmp/my_fifo` 创建命名管道
+运行例程 4 前需要执行 `mkfifo /tmp/my_fifo` 创建命名管道，例程 4 需要一起运行，[4.mpy_output.py](4.mpy_output.py) 在micropython中运行，[4.py_display.py](4.py_display.py) 在 python 中运行

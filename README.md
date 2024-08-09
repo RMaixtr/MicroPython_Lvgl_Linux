@@ -1,3 +1,18 @@
+# 零. Examples（示例）
+
+| 示例                                 | 说明                                           |
+| ------------------------------------ | ---------------------------------------------- |
+| [0.framebuffer.py](0.framebuffer.py) | 利用帧缓冲显示 Hello World！                   |
+| [1.file_system.py](1.file_system.py) | 利用文件系统显示 GIF 和中文                    |
+| [2.key.py](2.key.py)                 | 按键输入                                       |
+| [3.msdev.py](3.msdev.py)             | 鼠标输入                                       |
+| [4.mpy_output.py](4.mpy_output.py)   | 将图像显示数据利用命名管道输出                 |
+| [4.py_display.py](4.py_display.py)   | 使用 python 将图像显示数据从命名管道取出并显示 |
+
+例程 4 需要一起运行，[4.mpy_output.py](4.mpy_output.py) 在 micropython 中运行，[4.py_display.py](4.py_display.py) 在 python 中运行
+
+[lib](lib) 从 [micropython-lib](https://github.com/micropython/micropython-lib) 中提取了 os 模块，比  micropython 自带的 os 模块 多提供 popen 等功能
+
 # 一. Framebuffer Driver（利用帧缓冲显示）
 
 ![framebuffer](resource/framebuffer.png)
@@ -122,7 +137,7 @@ def flush_cb(disp, area, color_p):
 
 ```python
 import ffi
-libc = ffi.open("./libtest.so")
+libc = ffi.open("./libspilcd.so")
 
 SPILCD_flush = libc.func("v", "SPILCD_flush", "iiiiP")
 SPILCD_init = libc.func("i", "SPILCD_init", "")
@@ -131,17 +146,7 @@ SPILCD_init()
 SPILCD_flush(x1, y1, x2, y2, data)
 ```
 
-提供 RDK X3 的[示例](/ffi_x3)使用 `gcc -shared -o libtest.so SPILCD.c rgb2bgr.c DEV_Config.c -lwiringPi -fPIC ; ./micropython mpy_lvgl.py` 编译并执行
+提供 RDK X3 SPI LCD 显示的[示例](/ffi_x3)，[WiringPi](https://gitee.com/study-dp/WiringPi) 当前使用 commit e927bf0409e9466e0e5eb54061dfcfe79becaefc
 
-# 六. Examples（示例）
+使用 `gcc -shared -o libspilcd.so SPILCD.c rgb2bgr.c DEV_Config.c -lwiringPi -fPIC ; ./micropython mpy_lvgl.py` 编译并执行
 
-| 示例                                  | 说明                                           |
-| ------------------------------------- | ---------------------------------------------- |
-| [0.framebuffer.py](/0.framebuffer.py) | 利用帧缓冲显示 Hello World！                   |
-| [1.file_system.py](1.file_system.py)  | 利用文件系统显示 GIF 和中文                    |
-| [2.key.py](2.key.py)                  | 按键输入                                       |
-| [3.msdev.py](3.msdev.py)              | 鼠标输入                                       |
-| [4.mpy_output.py](4.mpy_output.py)    | 将图像显示数据利用命名管道输出                 |
-| [4.py_display.py](4.py_display.py)    | 使用 python 将图像显示数据从命名管道取出并显示 |
-
-例程 4 需要一起运行，[4.mpy_output.py](4.mpy_output.py) 在micropython中运行，[4.py_display.py](4.py_display.py) 在 python 中运行

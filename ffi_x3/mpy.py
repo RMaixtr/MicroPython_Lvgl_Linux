@@ -1,5 +1,5 @@
 import ffi
-libc = ffi.open("./libtest.so")
+libc = ffi.open("./libspilcd.so")
 
 SPILCD_flush = libc.func("v", "SPILCD_flush", "iiiiP")
 SPILCD_init = libc.func("i", "SPILCD_init", "")

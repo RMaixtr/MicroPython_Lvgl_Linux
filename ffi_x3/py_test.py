@@ -8,7 +8,7 @@ ffi.cdef("""
     void SPILCD_init();
 """)
 
-fun = ffi.dlopen("./libtest.so")
+fun = ffi.dlopen("./libspilcd.so")
 
 fun.SPILCD_init()
 

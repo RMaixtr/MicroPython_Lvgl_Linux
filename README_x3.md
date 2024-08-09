@@ -1,25 +1,18 @@
-v831|[rdkx3](README_x3.md)
+[v831](README.md)|[rdkx3](README.md)
 
 # 零. Examples（示例）
 
-| 示例                                      | 说明                                           |
-| ----------------------------------------- | ---------------------------------------------- |
-| [0.framebuffer.py](v831/0.framebuffer.py) | 利用帧缓冲显示 Hello World！                   |
-| [1.file_system.py](v831/1.file_system.py) | 利用文件系统显示 GIF 和中文                    |
-| [2.key.py](v831/2.key.py)                 | 按键输入                                       |
-| [3.msdev.py](v831/3.msdev.py)             | 鼠标输入                                       |
-| [4.mpy_output.py](v831/4.mpy_output.py)   | 将图像显示数据利用命名管道输出                 |
-| [4.py_display.py](v831/4.py_display.py)   | 使用 python 将图像显示数据从命名管道取出并显示 |
+| 示例                   | 说明                 |
+| ---------------------- | -------------------- |
+| [spilcd](rdkx3/spilcd) | 通过FFI 显示 SPI LCD |
 
-例程 4 需要一起运行，[4.mpy_output.py](v831/4.mpy_output.py) 在 micropython 中运行，[4.py_display.py](v831/4.py_display.py) 在 python 中运行
+使用 `gcc -shared -o libspilcd.so SPILCD.c rgb2bgr.c DEV_Config.c -lwiringPi -fPIC ; ./micropython mpy_lvgl.py` 编译并执行
 
 [lib](lib) 从 [micropython-lib](https://github.com/micropython/micropython-lib) 中提取了 os 模块，比  micropython 自带的 os 模块 多提供 popen 等功能
 
-v831 需将 libffi.so.8 复制至 /usr/lib `cp libffi.so.8 /usr/lib`
-
 # 一. Framebuffer Driver（利用帧缓冲显示）
 
-![framebuffer](resource/framebuffer.png)
+![framebuffer](C:\Users\RMaixtr\Desktop\1\1\test\resource\framebuffer.png)
 
 Usage（用法）
 
@@ -40,7 +33,7 @@ fs_driver.fs_register(fs_drv, 'L')
 
 ### 1. 显示 GIF
 
-![GIF](resource/GIF.gif)
+![GIF](C:\Users\RMaixtr\Desktop\1\1\test\resource\GIF.gif)
 
 ```python
 img = lv.gif(lv.screen_active())
@@ -54,7 +47,7 @@ img.align(lv.ALIGN.CENTER, -50, 0)
 
 alibaba.bin 中处理了'你''好'两个字符
 
-![zh](resource/zh.jpg)
+![zh](C:\Users\RMaixtr\Desktop\1\1\test\resource\zh.jpg)
 
 ```python
 myfont_cn = lv.binfont_create('L:/root/alibaba.bin')
@@ -77,7 +70,7 @@ def read_cb(indev, data) -> int:
 
 ### 1. 按键输入
 
-![key](resource/key.gif)
+![key](C:\Users\RMaixtr\Desktop\1\1\test\resource\key.gif)
 
 按钮分配给屏幕的特定坐标。 如果按下按钮，它将模拟按下指定坐标。
 
@@ -97,7 +90,7 @@ def read_cb(indev, data) -> int:
 
 ### 2. 鼠标输入
 
-![ms](resource/ms.gif)
+![ms](C:\Users\RMaixtr\Desktop\1\1\test\resource\ms.gif)
 
 ```python
 indev = lv.indev_create()

@@ -131,7 +131,7 @@ SPILCD_init()
 SPILCD_flush(x1, y1, x2, y2, data)
 ```
 
-提供 RDK X3 的[示例](/FFI_X3)使用 `gcc -shared -o libtest.so SPILCD.c rgb2bgr.c DEV_Config.c -lwiringPi -fPIC ; ./micropython mpy_lvgl.py` 编译并执行
+提供 RDK X3 的[示例](/ffi_x3)使用 `gcc -shared -o libtest.so SPILCD.c rgb2bgr.c DEV_Config.c -lwiringPi -fPIC ; ./micropython mpy_lvgl.py` 编译并执行
 
 # 六. Examples（示例）
 

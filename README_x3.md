@@ -1,4 +1,4 @@
-[v831](README.md)|[rdkx3](README.md)
+[v831](README.md)|rdkx3
 
 # 零. Examples（示例）
 

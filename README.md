@@ -13,6 +13,8 @@
 
 [lib](lib) 从 [micropython-lib](https://github.com/micropython/micropython-lib) 中提取了 os 模块，比  micropython 自带的 os 模块 多提供 popen 等功能
 
+[bin](bin) 储存 x3 和 v831 的 micropython，v831 需将 libffi.so.8 复制至 /usr/lib
+
 # 一. Framebuffer Driver（利用帧缓冲显示）
 
 ![framebuffer](resource/framebuffer.png)

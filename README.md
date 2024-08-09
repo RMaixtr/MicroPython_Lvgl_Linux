@@ -1,5 +1,3 @@
-v831|[rdkx3](README_x3.md)
-
 # 零. Examples（示例）
 
 | 示例                                      | 说明                                           |
@@ -16,6 +14,8 @@ v831|[rdkx3](README_x3.md)
 [lib](lib) 从 [micropython-lib](https://github.com/micropython/micropython-lib) 中提取了 os 模块，比  micropython 自带的 os 模块 多提供 popen 等功能
 
 v831 需将 libffi.so.8 复制至 /usr/lib `cp libffi.so.8 /usr/lib`
+
+rdkx3 不使用 Framebuffer
 
 # 一. Framebuffer Driver（利用帧缓冲显示）
 

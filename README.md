@@ -150,7 +150,7 @@ SPILCD_init()
 SPILCD_flush(x1, y1, x2, y2, data)
 ```
 
-提供 RDK X3 SPI LCD 显示的[示例](/ffi_x3)，[WiringPi](https://gitee.com/study-dp/WiringPi) 当前使用 commit e927bf0409e9466e0e5eb54061dfcfe79becaefc
+提供 RDK X3 SPI LCD 显示的[示例](rdkx3/spilcd)，[WiringPi](https://gitee.com/study-dp/WiringPi) 当前使用 commit e927bf0409e9466e0e5eb54061dfcfe79becaefc
 
 使用 `gcc -shared -o libspilcd.so SPILCD.c rgb2bgr.c DEV_Config.c -lwiringPi -fPIC ; ./micropython mpy_lvgl.py` 编译并执行
 

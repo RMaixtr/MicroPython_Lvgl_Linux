@@ -118,7 +118,22 @@ def flush_cb(disp, area, color_p):
     disp.flush_ready()
 ```
 
-# 五. Examples（示例）
+# 五.Foreign Function Interface（语言交互接口）
+
+```python
+import ffi
+libc = ffi.open("./libtest.so")
+
+SPILCD_flush = libc.func("v", "SPILCD_flush", "iiiiP")
+SPILCD_init = libc.func("i", "SPILCD_init", "")
+
+SPILCD_init()
+SPILCD_flush(x1, y1, x2, y2, data)
+```
+
+提供 RDK X3 的[示例](/FFI_X3)使用 `gcc -shared -o libtest.so SPILCD.c rgb2bgr.c DEV_Config.c -lwiringPi -fPIC ; ./micropython mpy_lvgl.py` 编译并执行
+
+# 六. Examples（示例）
 
 | 示例                                  | 说明                                           |
 | ------------------------------------- | ---------------------------------------------- |

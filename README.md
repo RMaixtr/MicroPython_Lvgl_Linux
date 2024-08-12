@@ -13,7 +13,7 @@
 
 [lib](lib) 从 [micropython-lib](https://github.com/micropython/micropython-lib) 中提取了 os 模块，比  micropython 自带的 os 模块 多提供 popen 等功能
 
-v831 需将 libffi.so.8 复制至 /usr/lib `cp libffi.so.8 /usr/lib`
+v831 需将 libffi.so.8 ld-musl-armhf.so.1 复制至 /usr/lib `cp libffi.so.8 /usr/lib`  `cp ld-musl-armhf.so.1 /usr/lib`
 
 rdkx3 不使用 Framebuffer
 
@@ -93,6 +93,12 @@ indev.set_button_points(point)
 def read_cb(indev, data) -> int:
     data.state = lv.INDEV_STATE.PRESSED if ((is_pressed() & 1) == 1) else lv.INDEV_STATE.RELEASED
     return 0
+```
+
+示例仅供演示按钮输入，有时会无法切换，推荐使用下面的方式实现切换
+
+```python
+button.scroll_to_view(lv.ANIM.ON)
 ```
 
 ### 2. 鼠标输入

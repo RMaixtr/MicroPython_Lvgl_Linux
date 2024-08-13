@@ -13,6 +13,13 @@
 
 [lib](lib) 从 [micropython-lib](https://github.com/micropython/micropython-lib) 中提取了 os 模块，比  micropython 自带的 os 模块 多提供 popen 等功能
 
+```python
+import os
+
+rt=os.popen("ls")
+print(rt.read())
+```
+
 v831 需将 libffi.so.8 ld-musl-armhf.so.1 复制至 /usr/lib `cp libffi.so.8 /usr/lib`  `cp ld-musl-armhf.so.1 /usr/lib`
 
 rdkx3 不使用 Framebuffer

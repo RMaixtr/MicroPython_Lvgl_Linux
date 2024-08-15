@@ -49,10 +49,24 @@ fs_driver.fs_register(fs_drv, 'L')
 
 ![GIF](resource/GIF.gif)
 
+##### (1) 使用文件系统
+
 ```python
 img = lv.gif(lv.screen_active())
 img.set_src( "L:/root/astronaut_ezgif.gif")
-img.align(lv.ALIGN.CENTER, -50, 0)
+```
+
+##### (2) 从 bytes 中创建
+
+```python
+img_bulb_gif = lv.image_dsc_t({
+    "header": { "w": 0, "h": 0,  "cf": lv.COLOR_FORMAT....},
+    "data_size": 0,
+    "data": gif_data,
+})
+
+img = lv.gif(lv.screen_active())
+img.set_src( img_bulb_gif)
 ```
 
 ### 2. 显示中文

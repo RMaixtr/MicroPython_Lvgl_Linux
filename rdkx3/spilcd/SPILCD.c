@@ -1,12 +1,8 @@
 
 #include "SPILCD.h"
-// #include "DEV_Config.h"
+#include "DEV_Config.h"
 #include <wiringPi.h>
 #include <wiringPiSPI.h>
-
-#define LCD_CS   22
-#define LCD_DC   29
-#define LCD_RST  28
 
 #include <stdbool.h>
 #include <stddef.h>
@@ -18,7 +14,6 @@
 /*********************
  *      DEFINES
  *********************/
-#define SPILCD_BAUD      		2000000    /*< 2,5 MHz (400 ns)*/
 
 #define SPILCD_CMD_MODE     0
 #define SPILCD_DATA_MODE    1
@@ -48,7 +43,7 @@
 
 static void LCD_2IN4_Reset(void)
 {
-	puts("LCD_2IN4_Reset");
+	puts("DLS LCD_2IN4_Reset");
 	DEV_Digital_Write(LCD_CS, 1);
 	DEV_Delay_ms(100);
 	DEV_Digital_Write(LCD_RST, 0);

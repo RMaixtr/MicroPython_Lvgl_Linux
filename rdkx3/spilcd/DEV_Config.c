@@ -126,10 +126,12 @@ void DEV_Delay_ms(UDOUBLE xms)
 
 static void DEV_GPIO_Init(void)
 {
+    printf("LCD CS %d RST %d DC %d BL %d \r\n", LCD_CS, LCD_RST, LCD_DC, LCD_BL);
+    
     DEV_GPIO_Mode(LCD_CS, 1);
     DEV_GPIO_Mode(LCD_RST, 1);
     DEV_GPIO_Mode(LCD_DC, 1);
-    // DEV_GPIO_Mode(LCD_BL, 1);
+    DEV_GPIO_Mode(LCD_BL, 1);
     
     // DEV_GPIO_Mode(KEY_UP_PIN, 0);
     // DEV_GPIO_Mode(KEY_DOWN_PIN, 0);
@@ -140,7 +142,10 @@ static void DEV_GPIO_Init(void)
     // DEV_GPIO_Mode(KEY2_PIN, 0);
     // DEV_GPIO_Mode(KEY3_PIN, 0);
     // LCD_CS_1;
-	// LCD_BL_1;
+	LCD_BL_1;
+    // // 背光测试有效
+    // sleep(1);
+    // LCD_BL_0;
     
 }
 /******************************************************************************
@@ -182,7 +187,7 @@ UBYTE DEV_ModuleInit(void)
         printf("set wiringPi lib success  !!! \r\n");
     }
     DEV_GPIO_Init();
-    wiringPiSPISetup(0,4800000000); // 48000000
+    wiringPiSPISetup(0,SPI_CLK); // 48000000
 	// pinMode (LCD_BL, PWM_OUTPUT);
     // pwmWrite(LCD_BL,512);
 

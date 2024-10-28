@@ -37,7 +37,7 @@ if __name__ == '__main__':
     fs_driver.fs_register(fs_drv, 'L')
 
     img = lv.gif(lv.screen_active())
-    img.set_src( "L:/root/lv_port_linux_frame_buffer/3816.gif")
+    img.set_src( "L:./3816.gif")
     # img.align(lv.ALIGN.CENTER, -50, 0)
     # img.set_size(120, 120)
 

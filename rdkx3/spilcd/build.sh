@@ -1,4 +1,6 @@
-cd /home/sunrise/dev/MicroPython_Lvgl_Linux/rdkx3/spilcd
+cd /root/MicroPython_Lvgl_Linux/rdkx3/spilcd
+
+killall micropython
 
 # gcc -shared -o libspilcd.so SPILCD.c rgb2bgr.c DEV_Config.c -lwiringPi -fPIC
 make clean

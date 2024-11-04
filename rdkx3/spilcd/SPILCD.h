@@ -25,7 +25,7 @@ extern "C" {
  **********************/
 #include <stdint.h>
 #define SPILCD_HOR_RES  		240
-#define SPILCD_VER_RES  		320
+#define SPILCD_VER_RES  		284
 
 /**********************
  * GLOBAL PROTOTYPES

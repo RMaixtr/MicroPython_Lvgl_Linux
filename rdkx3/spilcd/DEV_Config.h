@@ -41,13 +41,13 @@
 #define UWORD   uint16_t
 #define UDOUBLE uint32_t
 
-// 12MHz
-#define SPI_CLK 48000000
+// 40MHz
+#define SPI_CLK 400000000
 
-#define LCD_CS   22 // 可用板子自带的 CS ，测试的屏幕不受片选影响
-#define LCD_RST  28
+#define LCD_CS   5
+#define LCD_RST  30
 #define LCD_DC   29
-#define LCD_BL   27
+#define LCD_BL   25
 
 
 

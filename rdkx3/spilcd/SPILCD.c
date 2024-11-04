@@ -156,169 +156,266 @@ void SPILCD_init()
 	
 	LCD_2IN4_Reset();
 
-	LCD_2IN4_Write_Command(0xfd);
-	LCD_2IN4_WriteData_Byte(0x06);
-	LCD_2IN4_WriteData_Byte(0x08);
+	// LCD_2IN4_Write_Command(0xfd);
+	// LCD_2IN4_WriteData_Byte(0x06);
+	// LCD_2IN4_WriteData_Byte(0x08);
 
-	LCD_2IN4_Write_Command(0x61);
-	LCD_2IN4_WriteData_Byte(0x07);
-	LCD_2IN4_WriteData_Byte(0x04);
+	// LCD_2IN4_Write_Command(0x61);
+	// LCD_2IN4_WriteData_Byte(0x07);
+	// LCD_2IN4_WriteData_Byte(0x04);
 
-	LCD_2IN4_Write_Command(0x62);
-	LCD_2IN4_WriteData_Byte(0x00);
-	LCD_2IN4_WriteData_Byte(0x44);
-	LCD_2IN4_WriteData_Byte(0x45);
+	// LCD_2IN4_Write_Command(0x62);
+	// LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_WriteData_Byte(0x44);
+	// LCD_2IN4_WriteData_Byte(0x45);
 
-	LCD_2IN4_Write_Command(0x63);
-	LCD_2IN4_WriteData_Byte(0x41);
-	LCD_2IN4_WriteData_Byte(0x07);
-	LCD_2IN4_WriteData_Byte(0x12);
-	LCD_2IN4_WriteData_Byte(0x12);
+	// LCD_2IN4_Write_Command(0x63);
+	// LCD_2IN4_WriteData_Byte(0x41);
+	// LCD_2IN4_WriteData_Byte(0x07);
+	// LCD_2IN4_WriteData_Byte(0x12);
+	// LCD_2IN4_WriteData_Byte(0x12);
 
-	LCD_2IN4_Write_Command(0x64);
-	LCD_2IN4_WriteData_Byte(0x37);
+	// LCD_2IN4_Write_Command(0x64);
+	// LCD_2IN4_WriteData_Byte(0x37);
 	
-	LCD_2IN4_Write_Command(0x65);
-	LCD_2IN4_WriteData_Byte(0x09);
-	LCD_2IN4_WriteData_Byte(0x10);
-	LCD_2IN4_WriteData_Byte(0x21);
+	// LCD_2IN4_Write_Command(0x65);
+	// LCD_2IN4_WriteData_Byte(0x09);
+	// LCD_2IN4_WriteData_Byte(0x10);
+	// LCD_2IN4_WriteData_Byte(0x21);
 	
-	LCD_2IN4_Write_Command(0x66);
-	LCD_2IN4_WriteData_Byte(0x09);
-	LCD_2IN4_WriteData_Byte(0x10);
-	LCD_2IN4_WriteData_Byte(0x21);
+	// LCD_2IN4_Write_Command(0x66);
+	// LCD_2IN4_WriteData_Byte(0x09);
+	// LCD_2IN4_WriteData_Byte(0x10);
+	// LCD_2IN4_WriteData_Byte(0x21);
 	
-	LCD_2IN4_Write_Command(0x67);
-	LCD_2IN4_WriteData_Byte(0x20);
-	LCD_2IN4_WriteData_Byte(0x40);
+	// LCD_2IN4_Write_Command(0x67);
+	// LCD_2IN4_WriteData_Byte(0x20);
+	// LCD_2IN4_WriteData_Byte(0x40);
 
 	
-	LCD_2IN4_Write_Command(0x68);
-	LCD_2IN4_WriteData_Byte(0x90);
-	LCD_2IN4_WriteData_Byte(0x4c);
-	LCD_2IN4_WriteData_Byte(0x7C);
-	LCD_2IN4_WriteData_Byte(0x66);
+	// LCD_2IN4_Write_Command(0x68);
+	// LCD_2IN4_WriteData_Byte(0x90);
+	// LCD_2IN4_WriteData_Byte(0x4c);
+	// LCD_2IN4_WriteData_Byte(0x7C);
+	// LCD_2IN4_WriteData_Byte(0x66);
 
-	LCD_2IN4_Write_Command(0xb1);
-	LCD_2IN4_WriteData_Byte(0x0F);
-	LCD_2IN4_WriteData_Byte(0x02);
-	LCD_2IN4_WriteData_Byte(0x01);
+	// LCD_2IN4_Write_Command(0xb1);
+	// LCD_2IN4_WriteData_Byte(0x0F);
+	// LCD_2IN4_WriteData_Byte(0x02);
+	// LCD_2IN4_WriteData_Byte(0x01);
 
-	LCD_2IN4_Write_Command(0xB4);
-	LCD_2IN4_WriteData_Byte(0x01);
+	// LCD_2IN4_Write_Command(0xB4);
+	// LCD_2IN4_WriteData_Byte(0x01);
 	
-	LCD_2IN4_Write_Command(0xB5);
-	LCD_2IN4_WriteData_Byte(0x02);
-	LCD_2IN4_WriteData_Byte(0x02);
-	LCD_2IN4_WriteData_Byte(0x0a);
-	LCD_2IN4_WriteData_Byte(0x14);
+	// LCD_2IN4_Write_Command(0xB5);
+	// LCD_2IN4_WriteData_Byte(0x02);
+	// LCD_2IN4_WriteData_Byte(0x02);
+	// LCD_2IN4_WriteData_Byte(0x0a);
+	// LCD_2IN4_WriteData_Byte(0x14);
 
-	LCD_2IN4_Write_Command(0xB6);
-	LCD_2IN4_WriteData_Byte(0x04);
-	LCD_2IN4_WriteData_Byte(0x01);
-	LCD_2IN4_WriteData_Byte(0x9f);
-	LCD_2IN4_WriteData_Byte(0x00);
-	LCD_2IN4_WriteData_Byte(0x02);
+	// LCD_2IN4_Write_Command(0xB6);
+	// LCD_2IN4_WriteData_Byte(0x04);
+	// LCD_2IN4_WriteData_Byte(0x01);
+	// LCD_2IN4_WriteData_Byte(0x9f);
+	// LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_WriteData_Byte(0x02);
 
-	LCD_2IN4_Write_Command(0xdf);
-	LCD_2IN4_WriteData_Byte(0x11);
+	// LCD_2IN4_Write_Command(0xdf);
+	// LCD_2IN4_WriteData_Byte(0x11);
 
-	LCD_2IN4_Write_Command(0xE2);
-	LCD_2IN4_WriteData_Byte(0x13);
-	LCD_2IN4_WriteData_Byte(0x00);
-	LCD_2IN4_WriteData_Byte(0x00);
-	LCD_2IN4_WriteData_Byte(0x30);
-	LCD_2IN4_WriteData_Byte(0x33);
-	LCD_2IN4_WriteData_Byte(0x3f);
+	// LCD_2IN4_Write_Command(0xE2);
+	// LCD_2IN4_WriteData_Byte(0x13);
+	// LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_WriteData_Byte(0x30);
+	// LCD_2IN4_WriteData_Byte(0x33);
+	// LCD_2IN4_WriteData_Byte(0x3f);
 
-	LCD_2IN4_Write_Command(0xE5);
-	LCD_2IN4_WriteData_Byte(0x3f);
-	LCD_2IN4_WriteData_Byte(0x33);
-	LCD_2IN4_WriteData_Byte(0x30);
-	LCD_2IN4_WriteData_Byte(0x00);
-	LCD_2IN4_WriteData_Byte(0x00);
-	LCD_2IN4_WriteData_Byte(0x13);
+	// LCD_2IN4_Write_Command(0xE5);
+	// LCD_2IN4_WriteData_Byte(0x3f);
+	// LCD_2IN4_WriteData_Byte(0x33);
+	// LCD_2IN4_WriteData_Byte(0x30);
+	// LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_WriteData_Byte(0x13);
 
-	LCD_2IN4_Write_Command(0xE1);	
-	LCD_2IN4_WriteData_Byte(0x00);
-	LCD_2IN4_WriteData_Byte(0x57);
+	// LCD_2IN4_Write_Command(0xE1);	
+	// LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_WriteData_Byte(0x57);
 
-	LCD_2IN4_Write_Command(0xE4);
-	LCD_2IN4_WriteData_Byte(0x58);
-	LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_Write_Command(0xE4);
+	// LCD_2IN4_WriteData_Byte(0x58);
+	// LCD_2IN4_WriteData_Byte(0x00);
 
-	LCD_2IN4_Write_Command(0xE0);
-	LCD_2IN4_WriteData_Byte(0x01);
-	LCD_2IN4_WriteData_Byte(0x03);
-	LCD_2IN4_WriteData_Byte(0x0d);
-	LCD_2IN4_WriteData_Byte(0x0e);
-	LCD_2IN4_WriteData_Byte(0x0e);
-	LCD_2IN4_WriteData_Byte(0x0c);
-	LCD_2IN4_WriteData_Byte(0x15);
-	LCD_2IN4_WriteData_Byte(0x19);
+	// LCD_2IN4_Write_Command(0xE0);
+	// LCD_2IN4_WriteData_Byte(0x01);
+	// LCD_2IN4_WriteData_Byte(0x03);
+	// LCD_2IN4_WriteData_Byte(0x0d);
+	// LCD_2IN4_WriteData_Byte(0x0e);
+	// LCD_2IN4_WriteData_Byte(0x0e);
+	// LCD_2IN4_WriteData_Byte(0x0c);
+	// LCD_2IN4_WriteData_Byte(0x15);
+	// LCD_2IN4_WriteData_Byte(0x19);
 
-	LCD_2IN4_Write_Command(0xE3);
-	LCD_2IN4_WriteData_Byte(0x1a);
-	LCD_2IN4_WriteData_Byte(0x16);
-	LCD_2IN4_WriteData_Byte(0x0C);
-	LCD_2IN4_WriteData_Byte(0x0f);
-	LCD_2IN4_WriteData_Byte(0x0e);
-	LCD_2IN4_WriteData_Byte(0x0d);
-	LCD_2IN4_WriteData_Byte(0x02);
-	LCD_2IN4_WriteData_Byte(0x01);
+	// LCD_2IN4_Write_Command(0xE3);
+	// LCD_2IN4_WriteData_Byte(0x1a);
+	// LCD_2IN4_WriteData_Byte(0x16);
+	// LCD_2IN4_WriteData_Byte(0x0C);
+	// LCD_2IN4_WriteData_Byte(0x0f);
+	// LCD_2IN4_WriteData_Byte(0x0e);
+	// LCD_2IN4_WriteData_Byte(0x0d);
+	// LCD_2IN4_WriteData_Byte(0x02);
+	// LCD_2IN4_WriteData_Byte(0x01);
 
-	LCD_2IN4_Write_Command(0xE6);
-	LCD_2IN4_WriteData_Byte(0x00);
-	LCD_2IN4_WriteData_Byte(0xff);
+	// LCD_2IN4_Write_Command(0xE6);
+	// LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_WriteData_Byte(0xff);
 
-	LCD_2IN4_Write_Command(0xE7);
-	LCD_2IN4_WriteData_Byte(0x01);
-	LCD_2IN4_WriteData_Byte(0x04);
-	LCD_2IN4_WriteData_Byte(0x03);
-	LCD_2IN4_WriteData_Byte(0x03);
-	LCD_2IN4_WriteData_Byte(0x00);
-	LCD_2IN4_WriteData_Byte(0x12);
+	// LCD_2IN4_Write_Command(0xE7);
+	// LCD_2IN4_WriteData_Byte(0x01);
+	// LCD_2IN4_WriteData_Byte(0x04);
+	// LCD_2IN4_WriteData_Byte(0x03);
+	// LCD_2IN4_WriteData_Byte(0x03);
+	// LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_WriteData_Byte(0x12);
 
-	LCD_2IN4_Write_Command(0xE8);
-	LCD_2IN4_WriteData_Byte(0x00);
-	LCD_2IN4_WriteData_Byte(0x70);
-	LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_Write_Command(0xE8);
+	// LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_WriteData_Byte(0x70);
+	// LCD_2IN4_WriteData_Byte(0x00);
 
-	LCD_2IN4_Write_Command(0xEc);
-	LCD_2IN4_WriteData_Byte(0x52);
+	// LCD_2IN4_Write_Command(0xEc);
+	// LCD_2IN4_WriteData_Byte(0x52);
 
-	LCD_2IN4_Write_Command(0xF1);
-	LCD_2IN4_WriteData_Byte(0x01);
-	LCD_2IN4_WriteData_Byte(0x01);
-	LCD_2IN4_WriteData_Byte(0x02);
+	// LCD_2IN4_Write_Command(0xF1);
+	// LCD_2IN4_WriteData_Byte(0x01);
+	// LCD_2IN4_WriteData_Byte(0x01);
+	// LCD_2IN4_WriteData_Byte(0x02);
 
 
-	LCD_2IN4_Write_Command(0xF6);
-	LCD_2IN4_WriteData_Byte(0x09);
-	LCD_2IN4_WriteData_Byte(0x10);
-	LCD_2IN4_WriteData_Byte(0x00);
-	LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_Write_Command(0xF6);
+	// LCD_2IN4_WriteData_Byte(0x09);
+	// LCD_2IN4_WriteData_Byte(0x10);
+	// LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_WriteData_Byte(0x00);
 
-	LCD_2IN4_Write_Command(0xfd);
-	LCD_2IN4_WriteData_Byte(0xfa);
-	LCD_2IN4_WriteData_Byte(0xfc);
+	// LCD_2IN4_Write_Command(0xfd);
+	// LCD_2IN4_WriteData_Byte(0xfa);
+	// LCD_2IN4_WriteData_Byte(0xfc);
 
-	LCD_2IN4_Write_Command(0x3a);
-	LCD_2IN4_WriteData_Byte(0x05);
+	// LCD_2IN4_Write_Command(0x3a);
+	// LCD_2IN4_WriteData_Byte(0x05);
 
-	LCD_2IN4_Write_Command(0x35);
-	LCD_2IN4_WriteData_Byte(0x00);
+	// LCD_2IN4_Write_Command(0x35);
+	// LCD_2IN4_WriteData_Byte(0x00);
 
+	// LCD_2IN4_Write_Command(0x36);
+	// LCD_2IN4_WriteData_Byte(0x00);
+
+
+	// LCD_2IN4_Write_Command(0x21); 
+
+	// LCD_2IN4_Write_Command(0x11);
+	// DEV_Delay_ms(200);
+	// LCD_2IN4_Write_Command(0x29);
+	// DEV_Delay_ms(10);
+	
 	LCD_2IN4_Write_Command(0x36);
 	LCD_2IN4_WriteData_Byte(0x00);
+	// if(USE_HORIZONTAL==0)LCD_2IN4_WriteData_Byte(0x00);
+	// else if(USE_HORIZONTAL==1)LCD_2IN4_WriteData_Byte(0xC0);
+	// else if(USE_HORIZONTAL==2)LCD_2IN4_WriteData_Byte(0x70);
+	// else LCD_2IN4_WriteData_Byte(0xA0); 
 
+	LCD_2IN4_Write_Command( 0x3A);     
+	LCD_2IN4_WriteData_Byte( 0x05);   
 
-	LCD_2IN4_Write_Command(0x21); 
+	LCD_2IN4_Write_Command( 0xB2);     
+	LCD_2IN4_WriteData_Byte( 0x0B);   
+	LCD_2IN4_WriteData_Byte( 0x0B);   
+	LCD_2IN4_WriteData_Byte( 0x00);   
+	LCD_2IN4_WriteData_Byte( 0x33);   
+	LCD_2IN4_WriteData_Byte( 0x33);   
 
-	LCD_2IN4_Write_Command(0x11);
-	DEV_Delay_ms(200);
-	LCD_2IN4_Write_Command(0x29);
-	DEV_Delay_ms(10);
+	LCD_2IN4_Write_Command( 0xB7);     
+	LCD_2IN4_WriteData_Byte( 0x11);   
+
+	LCD_2IN4_Write_Command( 0xBB);     
+	LCD_2IN4_WriteData_Byte( 0x2F);   
+
+	LCD_2IN4_Write_Command( 0xC0);     
+	LCD_2IN4_WriteData_Byte( 0x2C);   
+
+	LCD_2IN4_Write_Command( 0xC2);     
+	LCD_2IN4_WriteData_Byte( 0x01);   
+
+	LCD_2IN4_Write_Command( 0xC3);     
+	LCD_2IN4_WriteData_Byte( 0x0D);   
+
+	LCD_2IN4_Write_Command( 0xC4);     
+	LCD_2IN4_WriteData_Byte( 0x20);   //VDV, 0x20:0v
+
+	LCD_2IN4_Write_Command( 0xC6);     
+	LCD_2IN4_WriteData_Byte( 0x18);   //0x13:60Hz   
+
+	LCD_2IN4_Write_Command( 0xD0);     
+	LCD_2IN4_WriteData_Byte( 0xA7);   
+	LCD_2IN4_WriteData_Byte( 0xA1); 
+
+	LCD_2IN4_Write_Command( 0xD0);     
+	LCD_2IN4_WriteData_Byte( 0xA4);   
+	LCD_2IN4_WriteData_Byte( 0xA1);   
+
+	LCD_2IN4_Write_Command( 0xD6);     
+	LCD_2IN4_WriteData_Byte( 0xA1);   //sleep in后，gate输出为GND
+
+	LCD_2IN4_Write_Command( 0xE0);     
+	LCD_2IN4_WriteData_Byte( 0xF0);   
+	LCD_2IN4_WriteData_Byte( 0x06);   
+	LCD_2IN4_WriteData_Byte( 0x0B);   
+	LCD_2IN4_WriteData_Byte( 0x0A);   
+	LCD_2IN4_WriteData_Byte( 0x09);   
+	LCD_2IN4_WriteData_Byte( 0x26);   
+	LCD_2IN4_WriteData_Byte( 0x29);   
+	LCD_2IN4_WriteData_Byte( 0x33);   
+	LCD_2IN4_WriteData_Byte( 0x41);   
+	LCD_2IN4_WriteData_Byte( 0x18);   
+	LCD_2IN4_WriteData_Byte( 0x16);   
+	LCD_2IN4_WriteData_Byte( 0x15);   
+	LCD_2IN4_WriteData_Byte( 0x29);   
+	LCD_2IN4_WriteData_Byte( 0x2D);   
+
+	LCD_2IN4_Write_Command( 0xE1);     
+	LCD_2IN4_WriteData_Byte( 0xF0);   
+	LCD_2IN4_WriteData_Byte( 0x04);   
+	LCD_2IN4_WriteData_Byte( 0x08);   
+	LCD_2IN4_WriteData_Byte( 0x08);   
+	LCD_2IN4_WriteData_Byte( 0x07);   
+	LCD_2IN4_WriteData_Byte( 0x03);   
+	LCD_2IN4_WriteData_Byte( 0x28);   
+	LCD_2IN4_WriteData_Byte( 0x32);   
+	LCD_2IN4_WriteData_Byte( 0x40);   
+	LCD_2IN4_WriteData_Byte( 0x3B);   
+	LCD_2IN4_WriteData_Byte( 0x19);   
+	LCD_2IN4_WriteData_Byte( 0x18);   
+	LCD_2IN4_WriteData_Byte( 0x2A);   
+	LCD_2IN4_WriteData_Byte( 0x2E);   
+
+	LCD_2IN4_Write_Command( 0xE4);     
+	LCD_2IN4_WriteData_Byte( 0x25);   
+	LCD_2IN4_WriteData_Byte( 0x00);   
+	LCD_2IN4_WriteData_Byte( 0x00);   //当gate没有用完时，bit4(TMG)设为0
+
+	LCD_2IN4_Write_Command( 0x35);     
+	LCD_2IN4_WriteData_Byte( 0x00); 
+
+	LCD_2IN4_Write_Command( 0x44);     
+	LCD_2IN4_WriteData_Byte( 0x00);   
+	LCD_2IN4_WriteData_Byte( 0x20); 
+	// LCD_2IN4_Write_Command( 0x21);   
+	LCD_2IN4_Write_Command( 0x11);     
+	DEV_Delay_ms(120);      
+	LCD_2IN4_Write_Command( 0x29);     
 }
 
 void LCD_2IN4_SetWindow(uint16_t Xstart, uint16_t Ystart, uint16_t Xend, uint16_t  Yend)
@@ -382,8 +479,8 @@ void LCD_2IN4_Clear(uint16_t Color)
 void SPILCD_flush(int x1,int y1,int x2,int y2,uint8_t *color_p){
 	
 
-	SPILCD_set_addr_win(x1, y1, x2, y2);
-	int32_t size = (x2 - x1 + 1) * (y2 - y1 + 1) ;
+	SPILCD_set_addr_win(x1, (y1), x2, (y2));
+	int32_t size = (x2 - x1 + 1) * ((y2) - (y1) + 1) ;
 
 	convert_image(color_p,table,size);
 	size *=2;

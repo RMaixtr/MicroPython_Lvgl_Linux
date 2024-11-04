@@ -25,13 +25,14 @@ class Display:
 
 if __name__ == '__main__':
     import time
+    import uasyncio
     from lv_utils import event_loop
     import fs_driver
     mpy.init()
     lv.init()
 
     event_loop = event_loop()
-    display = Display(240, 320)
+    display = Display(240, 284)
 
     fs_drv = lv.fs_drv_t()
     fs_driver.fs_register(fs_drv, 'L')
@@ -48,15 +49,23 @@ if __name__ == '__main__':
     label = lv.label(btn)
     label.set_text("Button")
     label.center()
-    
+
+    event_loop.async_timer()
+    print("dls", event_loop.is_running())
     a = 0
     b = 0
+    c = 0
     while True:
+        c+=1
+        img.set_pos(0, c)
         btn.set_pos(a, b)
         a+=1
         b+=1
+        if c > 80:
+            c = 0
         if a > 200:
             a = 0
             b = 0
         lv.timer_handler()
-        # time.sleep_ms(1)
+        time.sleep_ms(10)
+        # uasyncio.sleep_ms()

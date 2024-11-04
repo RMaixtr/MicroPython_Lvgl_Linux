@@ -22,21 +22,22 @@ class Display:
 
         disp.flush_ready()
 
+import time
+import uasyncio
+from lv_utils import event_loop
+import fs_driver
+import random
 
-if __name__ == '__main__':
-    import time
-    import uasyncio
-    from lv_utils import event_loop
-    import fs_driver
-    mpy.init()
-    lv.init()
+mpy.init()
+lv.init()
 
-    event_loop = event_loop()
-    display = Display(240, 284)
+event_loop = event_loop(freq=20, asynchronous=True)
+display = Display(240, 284)
 
-    fs_drv = lv.fs_drv_t()
-    fs_driver.fs_register(fs_drv, 'L')
+fs_drv = lv.fs_drv_t()
+fs_driver.fs_register(fs_drv, 'L')
 
+async def main():
     img = lv.gif(lv.screen_active())
     img.set_src( "L:./3816.gif")
     # img.align(lv.ALIGN.CENTER, -50, 0)
@@ -50,12 +51,48 @@ if __name__ == '__main__':
     label.set_text("Button")
     label.center()
 
-    event_loop.async_timer()
-    print("dls", event_loop.is_running())
+    # 创建 线 对象
+    obj_line = lv.line(lv.screen_active())
+    
+    # 创建样式
+    style = lv.style_t()
+    style.init()
+    style.set_line_color(lv.palette_main(lv.PALETTE.GREY))
+    style.set_line_width(6)
+    style.set_line_rounded(True)
+    # 添加样式
+    obj_line.add_style(style, 0)
+    
     a = 0
     b = 0
     c = 0
+
     while True:
+
+        x1=random.randint(0,240)
+        y1=random.randint(0,320)
+        x2=random.randint(0,240)
+        y2=random.randint(0,320)
+        x3=random.randint(0,240)
+        y3=random.randint(0,320)
+        x4=random.randint(0,240)
+        y4=random.randint(0,320)
+        x5=random.randint(0,240)
+        y5=random.randint(0,320)
+        x6=random.randint(0,240)
+        y6=random.randint(0,320)
+        x7=random.randint(0,240)
+        y7=random.randint(0,320)
+        x8=random.randint(0,240)
+        y8=random.randint(0,320)
+        x9=random.randint(0,240)
+        y9=random.randint(0,320)
+        point =  [{"x": x1, "y": y1}, {"x": x2, "y": y2}, {"x": x3, "y":y3}, {"x": x4, "y":y4}, {"x": x5, "y":y5}, {"x": x6, "y":y6}, {"x": x7, "y":y7}, {"x": x8, "y":y8}, {"x": x9, "y":y9}]
+ 
+        obj_line.set_points(point, len(point))
+ 
+        obj_line.center()
+        
         c+=1
         img.set_pos(0, c)
         btn.set_pos(a, b)
@@ -66,6 +103,9 @@ if __name__ == '__main__':
         if a > 200:
             a = 0
             b = 0
-        lv.timer_handler()
-        time.sleep_ms(10)
-        # uasyncio.sleep_ms()
+        # lv.timer_handler()
+        # time.sleep_ms(100)
+        await uasyncio.sleep_ms(20)
+        # print("dls")
+
+uasyncio.run(main())

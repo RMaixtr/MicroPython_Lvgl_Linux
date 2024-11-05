@@ -6,4 +6,5 @@ killall micropython
 make clean
 make
 
+echo "4" > /tmp/mpyheapsize
 ../micropython mpy_lvgl.py

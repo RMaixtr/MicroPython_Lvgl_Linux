@@ -12,6 +12,7 @@
 #include "DEV_Config.h"
 #include <wiringPi.h>
 #include <wiringPiSPI.h>
+#include <softPwm.h>
 #if USE_DEV_LIB
 int GPIO_Handle;
 int SPI_Handle;
@@ -142,12 +143,19 @@ static void DEV_GPIO_Init(void)
     // DEV_GPIO_Mode(KEY2_PIN, 0);
     // DEV_GPIO_Mode(KEY3_PIN, 0);
     // LCD_CS_1;
-	LCD_BL_1;
+	// LCD_BL_1;
+    softPwmCreate(LCD_BL, 100, 100);
     // // 背光测试有效
     // sleep(1);
     // LCD_BL_0;
     
 }
+
+void DEV_BLPWM_Write(int high_edge_time){
+    softPwmWrite(LCD_BL, high_edge_time);
+}
+
+
 /******************************************************************************
 function:	Module Initialize, the library and initialize the pins, SPI protocol
 parameter:

@@ -12,7 +12,6 @@
 #include "DEV_Config.h"
 #include <wiringPi.h>
 #include <wiringPiSPI.h>
-#include <softPwm.h>
 #if USE_DEV_LIB
 int GPIO_Handle;
 int SPI_Handle;
@@ -92,9 +91,12 @@ void DEV_GPIO_Mode(UWORD Pin, UWORD Mode)
     if(Mode == 0 || Mode == INPUT){
         pinMode(Pin, INPUT);
         pullUpDnControl(Pin, PUD_UP);
-    }else{ 
+    }else if(Mode == 1 || Mode == OUTPUT){ 
         pinMode(Pin, OUTPUT);
         printf (" %d OUT \r\n",Pin);
+    }else if(Mode == 2 || Mode == PWM_OUTPUT){
+        pinMode(Pin, PWM_OUTPUT);
+        printf (" %d PWM_OUTPUT \r\n",Pin);
     }
 
 #elif  USE_DEV_LIB  
@@ -132,7 +134,7 @@ static void DEV_GPIO_Init(void)
     DEV_GPIO_Mode(LCD_CS, 1);
     DEV_GPIO_Mode(LCD_RST, 1);
     DEV_GPIO_Mode(LCD_DC, 1);
-    DEV_GPIO_Mode(LCD_BL, 1);
+    DEV_GPIO_Mode(LCD_BL, 2);
     
     // DEV_GPIO_Mode(KEY_UP_PIN, 0);
     // DEV_GPIO_Mode(KEY_DOWN_PIN, 0);
@@ -144,7 +146,8 @@ static void DEV_GPIO_Init(void)
     // DEV_GPIO_Mode(KEY3_PIN, 0);
     // LCD_CS_1;
 	// LCD_BL_1;
-    softPwmCreate(LCD_BL, 100, 100);
+    pwmSetFreq (LCD_BL, 48000);
+    pwmSetDuty (LCD_BL, 100);
     // // 背光测试有效
     // sleep(1);
     // LCD_BL_0;
@@ -152,7 +155,7 @@ static void DEV_GPIO_Init(void)
 }
 
 void DEV_BLPWM_Write(int high_edge_time){
-    softPwmWrite(LCD_BL, high_edge_time);
+    pwmSetDuty(LCD_BL, high_edge_time);
 }
 
 

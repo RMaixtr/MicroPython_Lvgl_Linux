@@ -50,8 +50,10 @@ async def main():
 
     while True:
         mpy.set_pwm(50)
+        mpy.get_pwm()
         await uasyncio.sleep_ms(lv_tms)
         mpy.set_pwm(100)
+        mpy.get_pwm()
         await uasyncio.sleep_ms(lv_tms)
 
 uasyncio.run(main())

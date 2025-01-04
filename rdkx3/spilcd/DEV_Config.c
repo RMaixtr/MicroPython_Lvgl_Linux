@@ -12,6 +12,8 @@
 #include "DEV_Config.h"
 #include <wiringPi.h>
 #include <wiringPiSPI.h>
+#include <fcntl.h>
+#include <stdlib.h>
 #if USE_DEV_LIB
 int GPIO_Handle;
 int SPI_Handle;
@@ -156,6 +158,41 @@ static void DEV_GPIO_Init(void)
 
 void DEV_BLPWM_Write(int high_edge_time){
     pwmSetDuty(LCD_BL, high_edge_time);
+}
+
+float DEV_BLPWM_Read(void){
+
+  int fd;
+  char buf[64] = {0};
+  unsigned int duty_cycle_ns = 0;
+  unsigned int period_ns = 0;
+  char fName [64] ;
+
+  sprintf (fName, "/sys/class/pwm/pwmchip3/pwm1/period");
+
+  fd = open(fName, O_RDONLY);
+  if (fd < 0) {
+    perror(fName);
+    return fd;
+  }
+
+  read(fd, buf, sizeof(buf));
+
+  period_ns = atoi(buf);
+
+  sprintf (fName, "/sys/class/pwm/pwmchip3/pwm1/duty_cycle");
+
+  fd = open(fName, O_RDONLY);
+  if (fd < 0) {
+    perror(fName);
+    return fd;
+  }
+
+  read(fd, buf, sizeof(buf));
+
+  duty_cycle_ns = atoi(buf);
+
+  return (float)duty_cycle_ns/period_ns;
 }
 
 

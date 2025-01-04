@@ -94,6 +94,7 @@ UBYTE DEV_Digital_Read(UWORD Pin);
 void DEV_Delay_ms(UDOUBLE xms);
 
 void DEV_BLPWM_Write(int high_edge_time);
+float DEV_BLPWM_Read(void);
 
 void DEV_SPI_WriteByte(UBYTE Value);
 void DEV_SPI_Write_nByte(uint8_t *pData, uint32_t Len);

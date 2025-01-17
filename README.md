@@ -1,13 +1,14 @@
 # 零. Examples（示例）
 
-| 示例                                      | 说明                                           |
-| ----------------------------------------- | ---------------------------------------------- |
-| [0.framebuffer.py](v831/0.framebuffer.py) | 利用帧缓冲显示 Hello World！                   |
-| [1.file_system.py](v831/1.file_system.py) | 利用文件系统显示 GIF 和中文                    |
-| [2.key.py](v831/2.key.py)                 | 按键输入                                       |
-| [3.msdev.py](v831/3.msdev.py)             | 鼠标输入                                       |
-| [4.mpy_output.py](v831/4.mpy_output.py)   | 将图像显示数据利用命名管道输出                 |
-| [4.py_display.py](v831/4.py_display.py)   | 使用 python 将图像显示数据从命名管道取出并显示 |
+| 示例                                                  | 说明                                           |
+| ----------------------------------------------------- | ---------------------------------------------- |
+| [0.framebuffer.py](v831/0.framebuffer.py)             | 利用帧缓冲显示 Hello World！                   |
+| [1.file_system.py](v831/1.file_system.py)             | 利用文件系统显示 GIF 和中文                    |
+| [2.key.py](v831/2.key.py)                             | 按键输入                                       |
+| [3.msdev.py](v831/3.msdev.py)                         | 鼠标输入                                       |
+| [4.mpy_output.py](v831/4.mpy_output.py)               | 将图像显示数据利用命名管道输出                 |
+| [4.py_display.py](v831/4.py_display.py)               | 使用 python 将图像显示数据从命名管道取出并显示 |
+| [5.py_single_display.py](v831/5.py_single_display.py) | 单文件整合例程 4                               |
 
 例程 4 需要一起运行，[4.mpy_output.py](v831/4.mpy_output.py) 在 micropython 中运行，[4.py_display.py](v831/4.py_display.py) 在 python 中运行
 

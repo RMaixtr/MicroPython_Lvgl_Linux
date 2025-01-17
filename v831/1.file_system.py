@@ -19,14 +19,14 @@ fs_driver.fs_register(fs_drv, 'L')
 btn = lv.button(lv.screen_active())
 btn.align(lv.ALIGN.CENTER, 0, 0)
 
-myfont_cn = lv.binfont_create('L:/root/alibaba.bin')
+myfont_cn = lv.binfont_create('L:./alibaba.bin')
 label = lv.label(btn)
 label.set_style_text_font(myfont_cn, 0)
 label.set_text("你好")
 
 
 img = lv.gif(lv.screen_active())
-img.set_src( "L:/root/astronaut_ezgif.gif")
+img.set_src( "L:./astronaut_ezgif.gif")
 img.align(lv.ALIGN.CENTER, -50, 0)
 
 while True:

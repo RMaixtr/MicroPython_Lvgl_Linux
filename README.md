@@ -9,6 +9,7 @@
 | [4.mpy_output.py](v831/4.mpy_output.py)               | 将图像显示数据利用命名管道输出                 |
 | [4.py_display.py](v831/4.py_display.py)               | 使用 python 将图像显示数据从命名管道取出并显示 |
 | [5.py_single_display.py](v831/5.py_single_display.py) | 单文件整合例程 4                               |
+| [6.mpy_widgets.py](v831/6.mpy_widgets.py)             | 常用控件                                       |
 
 例程 4 需要一起运行，[4.mpy_output.py](v831/4.mpy_output.py) 在 micropython 中运行，[4.py_display.py](v831/4.py_display.py) 在 python 中运行
 

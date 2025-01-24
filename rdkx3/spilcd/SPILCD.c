@@ -321,7 +321,7 @@ void SPILCD_init()
 	// DEV_Delay_ms(10);
 	
 	LCD_2IN4_Write_Command(0x36);
-	LCD_2IN4_WriteData_Byte(0x00);
+	LCD_2IN4_WriteData_Byte(SPILCD_MADCTL_MX);
 	// if(USE_HORIZONTAL==0)LCD_2IN4_WriteData_Byte(0x00);
 	// else if(USE_HORIZONTAL==1)LCD_2IN4_WriteData_Byte(0xC0);
 	// else if(USE_HORIZONTAL==2)LCD_2IN4_WriteData_Byte(0x70);

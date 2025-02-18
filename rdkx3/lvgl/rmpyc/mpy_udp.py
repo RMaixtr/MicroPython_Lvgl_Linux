@@ -41,7 +41,7 @@ def decode_addr(addr):
 class ioexec(io.IOBase):
     def __init__(self):
         self.nc = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        addr = socket.getaddrinfo('0.0.0.0', 8266)[0][4]
+        addr = socket.getaddrinfo('0.0.0.0', 8770)[0][4]
         self.nc.bind(addr)
         self.target = socket.getaddrinfo('0.0.0.0', 8267)[0][4]
         self.public_tag = socket.getaddrinfo('239.1.1.1', 10000)[0][4]
@@ -85,9 +85,14 @@ def mpy_exec(data):
 while True:
     result = udpio.read(None)
     pm.reload_counter()
-    try:
-        micropython.schedule(mpy_exec, result)
-    except Exception as e:
-        # sys.print_exception(e, udpio)
-        micropython.schedule(udpio.write, str(sys.exc_info()).encode())
+    if len(result) < 1000:
+        try:
+            micropython.schedule(mpy_exec, result)
+        except Exception as e:
+            # sys.print_exception(e, udpio)
+            micropython.schedule(udpio.write, str(sys.exc_info()).encode())
+    else:
+        if result[0] == 0xff and result[1] == 0xd8:
+            micropython.schedule(pm.show, result)
+            
 

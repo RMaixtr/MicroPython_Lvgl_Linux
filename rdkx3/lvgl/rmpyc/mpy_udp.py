@@ -88,11 +88,16 @@ while True:
     if len(result) < 1000:
         try:
             micropython.schedule(mpy_exec, result)
+        except RuntimeError as e:
+            print("schedule")
         except Exception as e:
             # sys.print_exception(e, udpio)
-            micropython.schedule(udpio.write, str(sys.exc_info()).encode())
+            udpio.write(str(sys.exc_info()).encode())
     else:
         if result[0] == 0xff and result[1] == 0xd8:
-            micropython.schedule(pm.show, result)
+            try:
+                micropython.schedule(pm.show, result)
+            except RuntimeError as e:
+                print("schedule")
             
 

@@ -78,7 +78,12 @@ def mpy_exec(data):
     global print
     tmp = print
     print = exec_print
-    exec(data, globals(), globals())
+    try:
+        exec(data, globals(), globals())
+    except Exception as e:
+        # sys.print_exception(e, udpio)
+        print("exec",sys.exc_info())
+        udpio.write(str(sys.exc_info()).encode())
     print = tmp
     udpio.write(b'>>> ')
     
@@ -90,9 +95,6 @@ while True:
             micropython.schedule(mpy_exec, result)
         except RuntimeError as e:
             print("schedule")
-        except Exception as e:
-            # sys.print_exception(e, udpio)
-            udpio.write(str(sys.exc_info()).encode())
     else:
         if result[0] == 0xff and result[1] == 0xd8:
             try:

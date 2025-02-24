@@ -137,6 +137,7 @@ class pm(_pm):
         super().__init__(*args, **kargs)
         self.mouse = mouse
         self.path = kpath
+        self.font = lv.binfont_create('L:./reset/alibaba.bin')
         fs_drv = lv.fs_drv_t()
         fs_bytesio.fs_register(fs_drv, 'A')
         self.page_descrip_dict={}
@@ -481,10 +482,10 @@ class pm(_pm):
 
 
         if type:
-            with open(path + '../reset/msg/T.png', 'rb') as f:
+            with open(path + '../reset/msg/bot.png', 'rb') as f:
                 png_data = f.read()
         else:
-            with open(path + '../reset/msg/F.png', 'rb') as f:
+            with open(path + '../reset/msg/user.png', 'rb') as f:
                 png_data = f.read()
 
         img = lv.image_dsc_t({
@@ -497,11 +498,13 @@ class pm(_pm):
         msg_icon.set_pos(10,10)
 
         title_lable = lv.label(temp_card)
+        title_lable.set_style_text_font(self.font, 0)
         title_lable.set_text(caption)
         title_lable.set_pos(80,15)
         title_lable.set_style_text_color(lv.color_hex(0xffffffff), 0)
 
         txt_lable = lv.label(temp_card)
+        txt_lable.set_style_text_font(self.font, 0)
         txt_lable.set_text(text)
         txt_lable.set_pos(80,45)
         txt_lable.set_style_text_color(lv.color_hex(0xffffffff), 0)

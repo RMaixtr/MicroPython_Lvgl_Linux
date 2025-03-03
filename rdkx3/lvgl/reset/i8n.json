@@ -1,0 +1,41 @@
+{
+    "home": {
+      "zh": "主界面"
+    },
+    "Turn off": {
+      "zh": "关机"
+    },
+    "Brightness": {
+      "zh": "亮度"
+    },
+    "Face Registration": {
+      "zh": "人脸录入"
+    },
+    "Network": {
+      "zh": "网络"
+    },
+    "System Information": {
+      "zh": "系统信息"
+    },
+    "Volume": {
+      "zh": "音量"
+    },
+    "Language": {
+      "zh": "语言"
+    },
+    "Autonomy Status": {
+      "zh": "自主状态"
+    },
+    "Owner": {
+      "zh": "主人"
+    },
+    "Family": {
+      "zh": "家人"
+    },
+    "Friend": {
+      "zh": "朋友"
+    },
+    "Enemy": {
+      "zh": "敌人"
+    }
+  }

@@ -29,7 +29,7 @@ def wait_bar(page):
         label.set_style_text_color(lv.color_hex(0xffffffff), 0)
         return label
     
-    with open(pm.path + 'reset/false_b.png', 'rb') as f:
+    with open(pm.path + 'reset/true.png', 'rb') as f:
         true_data = f.read()
 
     with open(pm.path + 'reset/false.png', 'rb') as f:
@@ -58,11 +58,11 @@ def wait_bar(page):
     label4 = creat_label(170, "WIFI Driver")
     label5 = creat_label(200, "M-FFFFFFF")
 
-    img1 = creat_torf(78)
-    img2 = creat_torf(108)
-    img3 = creat_torf(138)
-    img4 = creat_torf(168)
-    img5 = creat_torf(198)
+    img1 = creat_torf(78, pm.state[0])
+    img2 = creat_torf(108, pm.state[0])
+    img3 = creat_torf(138, pm.state[0])
+    img4 = creat_torf(168, pm.state[0])
+    img5 = creat_torf(198, pm.state[0])
 
     anim1 = creat_anim(label1)
     anim2 = creat_anim(label2)
@@ -81,11 +81,11 @@ def wait_bar(page):
 
 
 def create(page):
-    print("setting_bios")
-    pm.create_bar(wait_bar,pm.path + 'reset/setting/setting_cartoon.png')
+    print("setting_bios: create")
+    pm.create_bar(wait_bar, "System Information")
 
 
 def unLoad(page):
-    print("setting_unLoad: unLoad")
+    print("setting_info: unLoad")
 
-page = lv_pm.page(create, unLoad, descrip="set_bios")
+page = lv_pm.page(create, unLoad, descrip="info")

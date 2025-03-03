@@ -3,6 +3,7 @@ import os
 import time
 from . import lv_anim
 from . import fs_bytesio
+from .i18n import i18n
 
 path = __file__[:__file__.rfind('/')+1]
 
@@ -15,6 +16,14 @@ def singleton(cls):
         return instances[cls]
 
     return get_instance
+
+def splitpath(filename):
+    filename = filename.split("/")[-1]
+    parts = filename.split(".")
+    if len(parts) > 1:
+        return ".".join(parts[:-1]), parts[-1]
+    else:
+        return filename, ""
 
 def _appear_complete_cb(pm_page, options):
     if pm_page.willAppear:
@@ -137,7 +146,10 @@ class pm(_pm):
         super().__init__(*args, **kargs)
         self.mouse = mouse
         self.path = kpath
+        self.i18n = i18n("./reset/i8n.json")
+        # self.font = lv.freetype_font_create('./reset/SiYuanHeiTi.otf',lv.FREETYPE_FONT_RENDER_MODE.BITMAP,25,lv.FREETYPE_FONT_STYLE.NORMAL)
         self.font = lv.binfont_create('L:./reset/alibaba.bin')
+        # self.i18n.set_locale("zh")
         fs_drv = lv.fs_drv_t()
         fs_bytesio.fs_register(fs_drv, 'A')
         self.page_descrip_dict={}
@@ -153,6 +165,7 @@ class pm(_pm):
         self.img_wifi = None
         self.img_battery = None
         self.lab_ipaddr = None
+        self.state = [True, True, True, True, True]
         self.wifi_lis = []
         self.batt_lis = []
         for i in range(1,5):
@@ -178,6 +191,18 @@ class pm(_pm):
         self.lis_descrip_dict={}
         self.bar = None
         self.msgbox = None
+
+    def _(self, msg: str) -> str:
+        return self.i18n.get_text(msg)
+    
+    def set_locale(self, l_name: str | None = None):
+        if self.i18n.set_locale(l_name):
+            if len(self.history):
+                tmp = self.history[-1]
+                self.history.pop()
+                self.open_page(tmp)
+            return True
+        return False
 
     def reload_counter(self):
         self.back_counter = time.time()
@@ -234,7 +259,7 @@ class pm(_pm):
                         self.back_home()
             ret = lv.button(self.router[self.history[-1]].page)
             ret.set_size(240, 20)
-            # ret.set_style_opa(0, lv.STATE.DEFAULT)
+            ret.set_style_opa(0, lv.STATE.DEFAULT)
             ret.align(lv.ALIGN.TOP_MID,0,0)
             ret.add_flag(lv.obj.FLAG.CLICKABLE)
             # ret.add_event_cb(drag_PRESS_cb,lv.EVENT.PRESSING,None)
@@ -242,7 +267,7 @@ class pm(_pm):
 
             ret_home = lv.button(self.router[self.history[-1]].page)
             ret_home.set_size(240, 20)
-            # ret_home.set_style_opa(0, lv.STATE.DEFAULT)
+            ret_home.set_style_opa(0, lv.STATE.DEFAULT)
             ret_home.align(lv.ALIGN.TOP_MID,0,lv.screen_active().get_height()-20)
             ret_home.add_flag(lv.obj.FLAG.CLICKABLE)
             # ret_home.add_event_cb(drag_PRESS_cb,lv.EVENT.PRESSING,None)
@@ -280,9 +305,9 @@ class pm(_pm):
         lv_anim._pm_anim_appear(prev_pm_page, pm_page.__options, _back_appear_complete_cb)
         return True
 
-    def create_page_lis(self, lis_cb, bg_path):
+    def create_page_lis(self, lis_cb, name):
 
-        with open(bg_path, 'rb') as f:
+        with open(self.path + 'reset/background.png', 'rb') as f:
             png_data = f.read()
         bg = lv.image_dsc_t({
             "data_size": len(png_data),
@@ -291,6 +316,12 @@ class pm(_pm):
         background = lv.image(self.router[self.history[-1]].page)
         background.set_src(bg)
         background.center()
+
+        lab_name = lv.label(background)
+        lab_name.align(lv.ALIGN.TOP_MID,0,5)
+        lab_name.set_style_text_font(self.font, 0)
+        lab_name.set_style_text_color(lv.color_hex(0xffffffff), 0)
+        lab_name.set_text(self._(name))
 
         panel_style = lv.style_t()
         panel_style.init()
@@ -307,9 +338,10 @@ class pm(_pm):
         self.panel.add_flag(lv.obj.FLAG.CLICKABLE)
         self.panel.add_event_cb(lis_cb, lv.EVENT.CLICKED, None)
 
-        self.lis_cb = lis_cb
+        # self.lis_cb = lis_cb
 
-    def create_png(self, path, descrip):
+    def create_png(self, path, name):
+        descrip = splitpath(path)[0]
         
         with open(path, 'rb') as f:
             png_data = f.read()
@@ -322,6 +354,12 @@ class pm(_pm):
         obj.center()
         obj.set_size(120,240)
 
+        lab_name = lv.label(obj)
+        lab_name.align(lv.ALIGN.BOTTOM_MID,0,-70)
+        lab_name.set_style_text_font(self.font, 0)
+        lab_name.set_style_text_color(lv.color_hex(0xffffffff), 0)
+        lab_name.set_text(self._(name))
+
         self.lis.append([obj, descrip])
         self.lis_descrip_dict[descrip] = len(self.lis) - 1
 
@@ -332,8 +370,8 @@ class pm(_pm):
         self.panel.move_foreground()
         self.panel.set_scroll_dir(lv.DIR.HOR)
 
-    def create_bar(self, cb, bg_path):
-        with open(bg_path, 'rb') as f:
+    def create_bar(self, cb, name):
+        with open(self.path + 'reset/background.png', 'rb') as f:
             png_data = f.read()
         
         bg = lv.image_dsc_t({
@@ -345,6 +383,12 @@ class pm(_pm):
         background.set_src(bg)
         background.center()
 
+        lab_name = lv.label(background)
+        lab_name.align(lv.ALIGN.TOP_MID,0,5)
+        lab_name.set_style_text_font(self.font, 0)
+        lab_name.set_style_text_color(lv.color_hex(0xffffffff), 0)
+        lab_name.set_text(self._(name))
+
         self.bar = lv.bar(background)
         self.bar.set_pos(45, 97)
         self.bar.set_size(150, 10)
@@ -353,7 +397,7 @@ class pm(_pm):
             self.bar.set_value(val, lv.ANIM.ON)
             # print(val)
             if val == 100:
-                background.clean()
+                self.bar.delete()
                 cb(background)
 
         anim = lv.anim_t()
@@ -518,6 +562,51 @@ class pm(_pm):
         a.set_completed_cb(lambda a: tempcard_ready_cb(temp_card))
         a.set_values(-msg_panel_h,10)
         a.start()
+
+    def messagebox(self, text="", mtype=0):
+
+        self.msgbox = lv.image(lv.layer_top())
+        lab_name = lv.label(self.msgbox)
+        if mtype == 0:
+            path = self.path + 'reset/msgbox/true.png'
+            lab_name.align(lv.ALIGN.CENTER, 0, 20)
+        elif mtype == 1:
+            path = self.path + 'reset/msgbox/false.png'
+            lab_name.align(lv.ALIGN.CENTER, 0, 20)
+        elif mtype == 2:
+            path = self.path + 'reset/msgbox/msg.png'
+            lab_name.align(lv.ALIGN.TOP_MID, -20, 20)
+        elif mtype == 3:
+            path = self.path + 'reset/msgbox/voice.png'
+            lab_name.align(lv.ALIGN.TOP_MID, -20, 20)
+
+        with open(path, 'rb') as f:
+            png_data = f.read()
+        
+        bg = lv.image_dsc_t({
+            "data_size": len(png_data),
+            "data": png_data,
+        })
+
+        def click(event):
+            self.msgbox.delete()
+
+        self.msgbox.set_src(bg)
+        self.msgbox.center()
+        self.msgbox.add_flag(lv.obj.FLAG.CLICKABLE)
+        self.msgbox.add_event_cb(click,lv.EVENT.RELEASED,None)
+
+        tmp = lv.anim_t()
+        tmp.init()
+        tmp.set_var(self.msgbox)
+        tmp.set_completed_cb(lambda a: self.msgbox.delete())
+        tmp.set_delay(3000)
+        tmp.start()
+
+        lab_name.set_style_text_font(self.font, 0)
+        lab_name.set_style_text_color(lv.color_hex(0xffffffff), 0)
+        lab_name.set_text(text)
+        
 
     def scroll_to_view(self, obj):
         if type(obj) == int:

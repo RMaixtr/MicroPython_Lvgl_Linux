@@ -20,8 +20,10 @@ if __name__ == '__main__':
     
     import page
     pm.open_page(0)
+
     import rmpyc
     rmpyc.udp()
+    
     while True:
         now_time = time.time()
 

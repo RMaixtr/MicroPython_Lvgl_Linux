@@ -338,7 +338,7 @@ class pm(_pm):
         self.panel.add_flag(lv.obj.FLAG.CLICKABLE)
         self.panel.add_event_cb(lis_cb, lv.EVENT.CLICKED, None)
 
-        # self.lis_cb = lis_cb
+        self.lis_cb = lis_cb
 
     def create_png(self, path, name):
         descrip = splitpath(path)[0]

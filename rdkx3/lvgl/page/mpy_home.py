@@ -14,10 +14,10 @@ def create(page):
 
     pm.create_page_lis(img_event_cb, "home")
 
-    pm.create_png(pm.path+'reset/home/status.png', "Autonomy Status")
+    pm.create_png(pm.path+'reset/home/info.png', "System Information")
     pm.create_png(pm.path+'reset/home/face.png', "Face Registration")
     pm.create_png(pm.path+'reset/home/network.png', "Network")
-    pm.create_png(pm.path+'reset/home/info.png', "System Information")
+    pm.create_png(pm.path+'reset/home/status.png', "Autonomy Status")
     pm.create_png(pm.path+'reset/home/light.png', "Brightness")
     pm.create_png(pm.path+'reset/home/volume.png', "Volume")
     pm.create_png(pm.path+'reset/home/language.png', "Language")

@@ -604,7 +604,7 @@ class pm(_pm):
         tmp.start()
 
         lab_name.set_style_text_font(self.font, 0)
-        lab_name.set_style_text_color(lv.color_hex(0xffffffff), 0)
+        # lab_name.set_style_text_color(lv.color_hex(0xffffffff), 0)
         lab_name.set_text(text)
         
 

@@ -165,6 +165,7 @@ class pm(_pm):
         self.img_wifi = None
         self.img_battery = None
         self.lab_ipaddr = None
+        self.msgbox = None
         self.state = [True, True, True, True, True]
         self.wifi_lis = []
         self.batt_lis = []
@@ -565,6 +566,9 @@ class pm(_pm):
         a.start()
 
     def messagebox(self, text="", mtype=0):
+        if self.msgbox:
+            self.msgbox.delete()
+            self.msgbox = None
 
         self.msgbox = lv.image(lv.layer_top())
         lab_name = lv.label(self.msgbox)
@@ -597,10 +601,12 @@ class pm(_pm):
         self.msgbox.add_flag(lv.obj.FLAG.CLICKABLE)
         self.msgbox.add_event_cb(click,lv.EVENT.RELEASED,None)
 
+        tmp_msgbox = self.msgbox
+
         tmp = lv.anim_t()
         tmp.init()
         tmp.set_var(self.msgbox)
-        tmp.set_completed_cb(lambda a: self.msgbox.delete())
+        tmp.set_completed_cb(lambda a: tmp_msgbox.delete())
         tmp.set_delay(3000)
         tmp.start()
 

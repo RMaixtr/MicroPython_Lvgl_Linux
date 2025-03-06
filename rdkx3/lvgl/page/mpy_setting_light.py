@@ -6,18 +6,17 @@ pm = lv_pm.pm()
 def create(page):
     print("setting_light: create")
 
-    pm.create_page_lis(lambda val: None, "Brightness")
-
     def bl_change(event):
-        if(event.get_code() == lv.EVENT.RELEASED):
-            pm.set_duty(100 - event.get_target_obj().get_value())
+        pm.set_duty(100 - pm.slider.get_value())
 
-    slider = lv.slider(page)
-    slider.set_range(30, 100)
-    slider.set_pos(45, 142)
-    slider.set_size(150, 10)
-    slider.set_value(100 - pm.get_duty(), lv.ANIM.ON)
-    slider.add_event_cb(bl_change,lv.EVENT.RELEASED,None)
+    pm.create_page_lis(bl_change, "Brightness")
+
+    pm.slider = lv.slider(page)
+    pm.slider.set_range(30, 100)
+    pm.slider.set_pos(45, 142)
+    pm.slider.set_size(150, 10)
+    pm.slider.set_value(100 - pm.get_duty(), lv.ANIM.ON)
+    pm.slider.add_event_cb(bl_change,lv.EVENT.RELEASED,None)
 
 
 def unLoad(page):

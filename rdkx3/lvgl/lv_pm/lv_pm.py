@@ -191,6 +191,7 @@ class pm(_pm):
         self.lis_descrip_dict={}
         self.bar = None
         self.msgbox = None
+        self.slider = None
 
     def _(self, msg: str) -> str:
         return self.i18n.get_text(msg)
@@ -618,20 +619,34 @@ class pm(_pm):
         tmp.scroll_to_view(lv.ANIM.ON)# , lv.ANIM.ON
 
     def scroll_prev(self):
-        tmp = self.get_lis_index()
-        if tmp:
-            self.scroll_to_view(tmp - 1)
-            return True
+        if self.slider:
+            tmp = self.slider.get_value() - 10
+            tmp = max(tmp, self.slider.get_min_value())
+            self.slider.set_value(tmp, lv.ANIM.ON)
+            if self.lis_cb:
+                self.lis_cb(self.slider)
         else:
-            return False
+            tmp = self.get_lis_index()
+            if tmp:
+                self.scroll_to_view(tmp - 1)
+                return True
+            else:
+                return False
 
     def scroll_next(self):
-        tmp = self.get_lis_index()
-        if tmp == len(self.lis) - 1:
-            return False
+        if self.slider:
+            tmp = self.slider.get_value() + 10
+            tmp = min(tmp, self.slider.get_max_value())
+            self.slider.set_value(tmp, lv.ANIM.ON)
+            if self.lis_cb:
+                self.lis_cb(self.slider)
         else:
-            self.scroll_to_view(tmp + 1)
-            return True
+            tmp = self.get_lis_index()
+            if tmp == len(self.lis) - 1:
+                return False
+            else:
+                self.scroll_to_view(tmp + 1)
+                return True
 
     def updata_info(self, signal_level, battery_level, ipaddr):
         if self.img_wifi is None:

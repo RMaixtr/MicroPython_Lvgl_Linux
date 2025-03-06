@@ -282,8 +282,11 @@ class pm(_pm):
     def back(self):
         if len(self.history) < 2:
             return False
+        tmp = self.get_page_descrip()
         self.__page_init()
-        return super().back()
+        super().back()
+        self.scroll_to_view(tmp)
+        return True
 
     def back_home(self):
         # if len(self.history) < 2:

@@ -6,7 +6,7 @@ def create(page):
     print("face: create")
 
     def event_cb(event):
-        pm.remote_msg(f'Face Registration:{event.get_target_obj().get_selected()}'.encode())
+        pm.remote_msg(f'Face Registration:{pm.get_lis_index()}'.encode())
 
     
     pm.create_page_lis(event_cb, "Face Registration")

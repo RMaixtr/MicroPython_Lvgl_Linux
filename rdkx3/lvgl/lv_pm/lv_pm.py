@@ -190,7 +190,7 @@ class pm(_pm):
         self.lis_cb = None
         self.lis_descrip_dict={}
         self.bar = None
-        self.msgbox = None
+        # self.msgbox = None
         self.slider = None
 
     def _(self, msg: str) -> str:

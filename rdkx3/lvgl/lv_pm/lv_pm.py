@@ -566,9 +566,11 @@ class pm(_pm):
         a.start()
 
     def messagebox(self, text="", mtype=0):
-        if self.msgbox:
-            self.msgbox.delete()
-            self.msgbox = None
+        def del_msgbox():
+            if self.msgbox is not None:
+                self.msgbox.delete()
+                self.msgbox = None
+        del_msgbox()
 
         self.msgbox = lv.image(lv.layer_top())
         lab_name = lv.label(self.msgbox)
@@ -594,19 +596,17 @@ class pm(_pm):
         })
 
         def click(event):
-            self.msgbox.delete()
+            del_msgbox()
 
         self.msgbox.set_src(bg)
         self.msgbox.center()
         self.msgbox.add_flag(lv.obj.FLAG.CLICKABLE)
         self.msgbox.add_event_cb(click,lv.EVENT.RELEASED,None)
 
-        tmp_msgbox = self.msgbox
-
         tmp = lv.anim_t()
         tmp.init()
         tmp.set_var(self.msgbox)
-        tmp.set_completed_cb(lambda a: tmp_msgbox.delete())
+        tmp.set_completed_cb(lambda a: del_msgbox())
         tmp.set_delay(3000)
         tmp.start()
 

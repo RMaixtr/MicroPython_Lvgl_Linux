@@ -10,7 +10,7 @@ class udpdevice():
         self.msg = b''
         self.addr = addr
 
-    async def init(self, loop):
+    async def init(self):
         class UdpServerProtocol:
             def connection_made(self, transport):
                 self.transport = transport
@@ -18,12 +18,17 @@ class udpdevice():
         def datagram_received(data, addr):
             self.msg += data
 
+        loop = asyncio.get_running_loop()
+
         transport, protocol = await loop.create_datagram_endpoint(
             lambda: UdpServerProtocol(),
-            local_addr=("0.0.0.0", 8267))
+            local_addr=("0.0.0.0", 0))
         
         self.transport = transport
         protocol.datagram_received = datagram_received
+
+        # local_addr = self.transport.get_extra_info('sockname')
+        # print(f"Bound to {local_addr[0]}:{local_addr[1]}")
 
     def write(self, data:bytes):
         self.transport.sendto(data ,(self.addr, 8770))
@@ -40,12 +45,11 @@ class udpdevice():
         if add_retoutput:
             cmd = b'print(' + cmd + b')'
         self.msg = b''
-        if waitret:
+        if not waitret:
+            self.write(cmd + b"\r")
+        else: 
             self.write(cmd + b"\r")
             await self.wait()
-        else:
-            self.write(cmd + b"\r")
-        if waitret:
             cmd_filt = cmd + b'\r\n'
             buff = self.msg.replace(cmd_filt, b'', 1)
             if self._traceback in buff:

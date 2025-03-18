@@ -43,11 +43,10 @@ class ioexec(io.IOBase):
         self.nc = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         addr = socket.getaddrinfo('0.0.0.0', 8770)[0][4]
         self.nc.bind(addr)
-        self.target = socket.getaddrinfo('0.0.0.0', 8267)[0][4]
         self.public_tag = socket.getaddrinfo('239.1.1.1', 10000)[0][4]
 
-    def write(self, buf):
-        self.nc.sendto(buf, self.target)
+    def write(self, buf, target=socket.getaddrinfo('0.0.0.0', 8267)[0][4]):
+        self.nc.sendto(buf, target)
         return len(bytes(buf))
     
     def public_msg(self, buf):
@@ -56,43 +55,40 @@ class ioexec(io.IOBase):
 
     def read(self, n):
         data, addr = self.nc.recvfrom(102400)
-        ip, _ = decode_addr(addr)
-        self.target = socket.getaddrinfo(ip, 8267)[0][4]
-        return data
+        ip, port = decode_addr(addr)
+        target = socket.getaddrinfo(ip, port)[0][4]
+        return data, target
     
 udpio = ioexec()
 pm.remote_msg = udpio.public_msg
-
-def exec_print(*args, **kwargs):
-    
-    flags = ['>', '<', 'object', 'at', '0x']
-    args_repr = [repr(a) for a in args if any(
-        f not in repr(a) for f in flags)]
-    kwargs_repr = [f"{k}={repr(v)}" if not callable(
-        v) else f"{k}={v.__name__}" for k, v in kwargs.items()]
-    signature = ", ".join(args_repr + kwargs_repr)
-    udpio.write(signature.encode())
 
 import micropython
 def mpy_exec(data):
     global print
     tmp = print
+    def exec_print(*args, **kwargs):
+        flags = ['>', '<', 'object', 'at', '0x']
+        args_repr = [repr(a) for a in args if any(
+            f not in repr(a) for f in flags)]
+        kwargs_repr = [f"{k}={repr(v)}" if not callable(
+            v) else f"{k}={v.__name__}" for k, v in kwargs.items()]
+        signature = ", ".join(args_repr + kwargs_repr)
+        udpio.write(signature.encode(), data[1])
     print = exec_print
     try:
-        exec(data, globals(), globals())
+        exec(data[0], globals(), globals())
     except Exception as e:
         # sys.print_exception(e, udpio)
-        print("exec",sys.exc_info())
-        udpio.write(str(sys.exc_info()).encode())
+        tmp("exec",sys.exc_info())
+        udpio.write(str(sys.exc_info()).encode(), data[1])
     print = tmp
-    udpio.write(b'>>> ')
-    
+    udpio.write(b'>>> ', data[1])
+
 while True:
-    result = udpio.read(None)
+    result, target = udpio.read(None)
     try:
-        micropython.schedule(mpy_exec, result)
+        micropython.schedule(mpy_exec, [result, target])
     except RuntimeError as e:
         print("schedule")
-
             
 

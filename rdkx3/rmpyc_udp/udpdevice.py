@@ -7,7 +7,7 @@ import socket
 class udpdevice():
     def __init__(self, addr):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.socket.bind(("0.0.0.0", 8267))
+        self.socket.bind(("0.0.0.0", 0))
         self.settimeout(0.2)
         self.addr = addr
         self._banner = b'\x02'

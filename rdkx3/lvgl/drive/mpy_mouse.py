@@ -43,7 +43,6 @@ class mouse_indev:
         # Check if there is input to be read from evdev
         if not self.poll.poll()[0][1] & select.POLLIN:
             return 0
-        pm.reload_counter()
         while True:
             # Data is relative, update coordinates
             time_sec, time_usec, _type, code, value = ustruct.unpack('QQHHi', self.evdev.read(24))

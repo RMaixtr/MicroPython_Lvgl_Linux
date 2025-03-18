@@ -25,14 +25,4 @@ if __name__ == '__main__':
     rmpyc.udp()
     
     while True:
-        now_time = time.time()
-
-        if now_time - pm.back_counter > 30:
-            if not pm.show_obj[0]:
-                pm.show("./reset/start.gif")
-        else:
-            if pm.show_obj[1] in ("gif", "express"):
-                pm.clear_show()
-        if now_time - pm.back_counter > 0.2 and pm.show_obj[1] == "cam":
-            pm.clear_show()
         time.sleep_ms(500)

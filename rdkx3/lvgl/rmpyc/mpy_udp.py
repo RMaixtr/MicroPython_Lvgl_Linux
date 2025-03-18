@@ -89,17 +89,10 @@ def mpy_exec(data):
     
 while True:
     result = udpio.read(None)
-    pm.reload_counter()
-    if len(result) < 1000:
-        try:
-            micropython.schedule(mpy_exec, result)
-        except RuntimeError as e:
-            print("schedule")
-    else:
-        if result[0] == 0xff and result[1] == 0xd8:
-            try:
-                micropython.schedule(pm.show, result)
-            except RuntimeError as e:
-                print("schedule")
+    try:
+        micropython.schedule(mpy_exec, result)
+    except RuntimeError as e:
+        print("schedule")
+
             
 

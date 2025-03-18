@@ -6,11 +6,11 @@ import lv_pm
 pm = lv_pm.pm()
 
 import re
-import json
+import os
 
 def get_wlan0info():
     essid, signal_level = "", ""
-    rt = cmodule.rpopen("iwconfig wlan0")
+    rt = os.popen("iwconfig wlan0")
     try:
         tmp = rt.split("\n")
         if "unassociated" in tmp[0]:
@@ -28,7 +28,7 @@ def get_wlan0info():
     if match:
         signal_level = match.group(1)
 
-    rt = cmodule.rpopen("ip -4 addr show wlan0 | grep 'inet' | awk '{print $2}' | cut -d/ -f1")
+    rt = os.popen("ip -4 addr show wlan0 | grep 'inet' | awk '{print $2}' | cut -d/ -f1")
     ipaddr = rt[:-1]
     return [essid, signal_level, ipaddr] if all([essid, signal_level, ipaddr]) else False
 
